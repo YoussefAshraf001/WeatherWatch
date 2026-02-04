@@ -70,7 +70,7 @@ It blends **accurate forecasts**, **cinematic UI**, and **smooth spatial navigat
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/your-username/weatherwatch.git
+git clone https://github.com/YoussefAshraf001/weatherwatch.git
 cd weatherwatch
 npm install
 npm run dev
