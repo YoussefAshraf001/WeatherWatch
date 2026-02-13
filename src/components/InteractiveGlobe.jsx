@@ -9,7 +9,6 @@ export default function InteractiveGlobe({
   marker,
   onGlobeClick,
   isDay,
-  conditionText,
   dayToggleIntent,
   clearDayToggleIntent,
 }) {
@@ -44,21 +43,6 @@ export default function InteractiveGlobe({
     if (!globeRef.current) return;
     lastPOV.current = globeRef.current.pointOfView();
   });
-
-  /* ===================== Atmosphere color ===================== */
-  const atmosphereColor = (() => {
-    if (!conditionText) return "#88ccee";
-    const text = conditionText.toLowerCase();
-
-    if (text.includes("clear")) return "#88ccee";
-    if (text.includes("cloud")) return "#b0b0b0";
-    if (text.includes("rain")) return "#6fa8dc";
-    if (text.includes("snow")) return "#e6f2ff";
-    if (text.includes("storm") || text.includes("thunder")) return "#7a7a9d";
-    if (text.includes("mist") || text.includes("fog")) return "#9db4c0";
-
-    return "#88ccee";
-  })();
 
   /* ===================== Day / Night transition ===================== */
   useEffect(() => {
