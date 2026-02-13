@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Globe from "react-globe.gl";
 import earthDay from "../assets/earthTextures/daymap.jpg";
 import earthNight from "../assets/earthTextures/nightmap.jpg";
-import cloudTexture from "../assets/earthTextures/clouds.png";
-import starsTexture from "../assets/stars.jpg";
+// import starsTexture from "../assets/stars.jpg";
 
 export default function InteractiveGlobe({
   globeRef,
@@ -130,14 +129,14 @@ export default function InteractiveGlobe({
       className="relative w-full h-[300px] rounded-3xl overflow-hidden bg-black"
     >
       {/* Stars background */}
-      <div
+      {/* <div
         className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
           backgroundImage: `url(${starsTexture})`,
           backgroundRepeat: "repeat",
           backgroundSize: "600px 600px",
         }}
-      />
+      /> */}
 
       {/* Vignette */}
       <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
@@ -150,7 +149,6 @@ export default function InteractiveGlobe({
           globeImageUrl={
             isIdle ? earthDay : textureIsDay ? earthDay : earthNight
           }
-          globeCloudsTextureUrl={cloudTexture}
           showAtmosphere
           atmosphereAltitude={0.15}
           ambientLightIntensity={isIdle ? 0.4 : 0.25 + lightBlend * 0.55}

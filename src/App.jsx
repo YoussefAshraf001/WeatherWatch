@@ -63,6 +63,9 @@ export default function App() {
         `${data.location.name}, ${data.location.country}`,
       );
 
+      console.log("Fetched weather data:", data); // Debug log
+      console.log("localtime:", data.location.localtime);
+
       toast(
         <span>
           We now flew to{" "}
@@ -74,6 +77,13 @@ export default function App() {
       );
 
       const transformedData = {
+        location: {
+          name: data.location.name,
+          country: data.location.country,
+          localtime: data.location.localtime,
+          tz_id: data.location.tz_id,
+        },
+
         current: {
           temp: data.current.temp_c,
           feelslike_c: data.current.feelslike_c,
@@ -319,11 +329,15 @@ export default function App() {
                 {/* Time & date */}
                 <div>
                   <p className="text-2xl font-light text-white leading-none">
-                    {new Date().toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    {weatherData &&
+                      new Date(
+                        weatherData.location.localtime,
+                      ).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
                   </p>
+
                   <p className="text-xs text-gray-400 mt-1">
                     {new Date().toLocaleDateString("en-US", {
                       weekday: "long",
